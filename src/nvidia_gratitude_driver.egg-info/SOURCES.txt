@@ -21,6 +21,7 @@ src/nvidia_gratitude_driver.egg-info/entry_points.txt
 src/nvidia_gratitude_driver.egg-info/requires.txt
 src/nvidia_gratitude_driver.egg-info/top_level.txt
 tests/test_browser.py
+tests/test_github_submission_review.py
 tests/test_governor.py
 tests/test_gpu.py
 tests/test_state.py

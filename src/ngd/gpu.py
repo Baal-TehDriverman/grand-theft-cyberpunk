@@ -46,7 +46,7 @@ class GpuTelemetry:
             try:
                 pynvml.nvmlInit()
                 self._nvml = pynvml
-                self._handle = pynvml.nvmlDeviceGetHandleByIndex(index)
+                self._handle = pynvml.nvmlDeviceGetHandleByIndex(index)  # pyright: ignore
             except Exception:
                 self._nvml = None
                 self._handle = None

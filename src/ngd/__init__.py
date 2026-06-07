@@ -15,7 +15,7 @@ from .slo import ALL_SLOs, SLO, generate_slo_report
 # Optional tracing - only export if tracing is available
 _tracing_available = False
 try:
-    from .tracing import (
+    from .tracing import (  # noqa: F401
         enable_tracing,
         trace_gpu_sample,
         trace_routing_decision,

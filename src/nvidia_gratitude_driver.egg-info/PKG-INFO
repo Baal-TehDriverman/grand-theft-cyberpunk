@@ -82,29 +82,36 @@ and emits conservative routing recommendations.
 - Rotates telemetry logs at a configurable size.
 - Provides a diagnostic command and deterministic release builder.
 
-## Install
+## Friend-ready Windows install
+
+Prerequisites: Windows 10/11, PowerShell 5.1 or newer, and Python 3.10 or newer.
+Extract the release ZIP anywhere you can write files, open PowerShell in that folder, and run:
 
 ```powershell
-cd D:\pub
-cd nvidia_gratitude_driver
-python -m venv .venv-ngd
-.\.venv-ngd\Scripts\Activate.ps1
-pip install -e .
+Set-ExecutionPolicy -Scope Process Bypass
+.\scripts\install-windows.ps1
+.\scripts\start-ngd.ps1
 ```
 
-## Run
+The installer creates a private `.venv-ngd` beside the extracted files, installs the package
+without modifying global Python packages, and runs diagnostics. No fixed drive or checkout path
+is required. Re-run with `-Force` to rebuild the private environment.
+
+## Run and verify
 
 ```powershell
-python -m ngd.driver --interval 1.0 --runtime .\runtime\nvidia_gratitude_driver
+.\scripts\start-ngd.ps1
+.\scripts\verify-windows.ps1
 ```
 
 ## Validate and package
 
 ```powershell
-python -m pytest
-python -m ngd.diagnostics --runtime .\runtime\nvidia_gratitude_driver
 .\scripts\build-release.ps1
 ```
+
+The builder writes `release\nvidia-gratitude-driver.zip` and a matching `.sha256` file.
+The ZIP includes the Windows install, verification, launch, and terminal parsing scripts.
 
 ## Parse leaked terminal event logs
 

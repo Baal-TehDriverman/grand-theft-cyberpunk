@@ -18,35 +18,35 @@ def enable_tracing(
     global _tracing_enabled, _tracer, _meter
 
     try:
-        from opentelemetry.sdk.trace import TracerProvider
-        from opentelemetry.sdk.trace.export import BatchSpanProcessor
-        from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-        from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-        from opentelemetry.trace import set_tracer_provider, get_tracer
-        from opentelemetry.sdk.metrics import MeterProvider
-        from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-        from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
-        from opentelemetry.metrics import set_meter_provider, get_meter
+        from opentelemetry.sdk.trace import TracerProvider  # type: ignore[import-not-found]
+        from opentelemetry.sdk.trace.export import BatchSpanProcessor  # type: ignore[import-not-found]
+        from opentelemetry.sdk.resources import SERVICE_NAME, Resource  # type: ignore[import-not-found]
+        from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter  # type: ignore[import-not-found]
+        from opentelemetry.trace import set_tracer_provider, get_tracer  # type: ignore[import-not-found]
+        from opentelemetry.sdk.metrics import MeterProvider  # type: ignore[import-not-found]
+        from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader  # type: ignore[import-not-found]
+        from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter  # type: ignore[import-not-found]
+        from opentelemetry.metrics import set_meter_provider, get_meter  # type: ignore[import-not-found]
 
-        resource = Resource(attributes={SERVICE_NAME: service_name})
-        trace_provider = TracerProvider(resource=resource)
+        resource = Resource(attributes={SERVICE_NAME: service_name})  # pyright: ignore
+        trace_provider = TracerProvider(resource=resource)  # pyright: ignore
 
         if endpoint:
-            otlp_exporter = OTLPSpanExporter(endpoint=endpoint)
-            trace_provider.add_span_processor(BatchSpanProcessor(otlp_exporter))
+            otlp_exporter = OTLPSpanExporter(endpoint=endpoint)  # pyright: ignore
+            trace_provider.add_span_processor(BatchSpanProcessor(otlp_exporter))  # pyright: ignore
 
         set_tracer_provider(trace_provider)
-        _tracer = get_tracer(service_name)
+        _tracer = get_tracer(service_name)  # pyright: ignore
 
         # Metrics
         metric_readers = []
         if endpoint:
-            metric_exporter = OTLPMetricExporter(endpoint=endpoint)
-            metric_readers.append(PeriodicExportingMetricReader(metric_exporter))
+            metric_exporter = OTLPMetricExporter(endpoint=endpoint)  # pyright: ignore
+            metric_readers.append(PeriodicExportingMetricReader(metric_exporter))  # pyright: ignore
 
-        meter_provider = MeterProvider(resource=resource, metric_readers=metric_readers)
+        meter_provider = MeterProvider(resource=resource, metric_readers=metric_readers)  # pyright: ignore
         set_meter_provider(meter_provider)
-        _meter = get_meter(service_name)
+        _meter = get_meter(service_name)  # pyright: ignore
 
         _tracing_enabled = True
     except ImportError:

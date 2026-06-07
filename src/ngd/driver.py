@@ -38,26 +38,40 @@ if _enable_tracing:
 
 
 # Prometheus metrics - lazy init to avoid duplicate registration on module reload
-def _init_prometheus_metrics():
+# pyright: ignore[reportConstantRedefinition]
+VRAM_FREE_GAUGE: Gauge | None = None
+VRAM_USED_GAUGE: Gauge | None = None
+VRAM_TOTAL_GAUGE: Gauge | None = None
+GPU_UTIL_GAUGE: Gauge | None = None
+MEM_UTIL_GAUGE: Gauge | None = None
+TEMPERATURE_GAUGE: Gauge | None = None
+POWER_GAUGE: Gauge | None = None
+ROUTE_COUNTER: Counter | None = None
+SAMPLE_LATENCY: Histogram | None = None
+SAMPLE_ERRORS: Counter | None = None
+_PROMETHEUS_INITIALIZED: bool = False
+
+
+def _init_prometheus_metrics() -> None:
     """Initialize Prometheus metrics lazily to avoid duplicate registration."""
     global VRAM_FREE_GAUGE, VRAM_USED_GAUGE, VRAM_TOTAL_GAUGE, GPU_UTIL_GAUGE
     global MEM_UTIL_GAUGE, TEMPERATURE_GAUGE, POWER_GAUGE
     global ROUTE_COUNTER, SAMPLE_LATENCY, SAMPLE_ERRORS
     global _PROMETHEUS_INITIALIZED
     
-    if "_PROMETHEUS_INITIALIZED" not in globals() or not _PROMETHEUS_INITIALIZED:
-        VRAM_FREE_GAUGE = Gauge("ngd_vram_free_mb", "Free VRAM in MB")
-        VRAM_USED_GAUGE = Gauge("ngd_vram_used_mb", "Used VRAM in MB")
-        VRAM_TOTAL_GAUGE = Gauge("ngd_vram_total_mb", "Total VRAM in MB")
-        GPU_UTIL_GAUGE = Gauge("ngd_gpu_util_percent", "GPU utilization percent")
-        MEM_UTIL_GAUGE = Gauge("ngd_mem_util_percent", "Memory utilization percent")
-        TEMPERATURE_GAUGE = Gauge("ngd_temperature_c", "GPU temperature in Celsius")
-        POWER_GAUGE = Gauge("ngd_power_w", "GPU power draw in Watts")
+    if not _PROMETHEUS_INITIALIZED:
+        VRAM_FREE_GAUGE = Gauge("ngd_vram_free_mb", "Free VRAM in MB")  # pyright: ignore[reportConstantRedefinition]
+        VRAM_USED_GAUGE = Gauge("ngd_vram_used_mb", "Used VRAM in MB")  # pyright: ignore[reportConstantRedefinition]
+        VRAM_TOTAL_GAUGE = Gauge("ngd_vram_total_mb", "Total VRAM in MB")  # pyright: ignore[reportConstantRedefinition]
+        GPU_UTIL_GAUGE = Gauge("ngd_gpu_util_percent", "GPU utilization percent")  # pyright: ignore[reportConstantRedefinition]
+        MEM_UTIL_GAUGE = Gauge("ngd_mem_util_percent", "Memory utilization percent")  # pyright: ignore[reportConstantRedefinition]
+        TEMPERATURE_GAUGE = Gauge("ngd_temperature_c", "GPU temperature in Celsius")  # pyright: ignore[reportConstantRedefinition]
+        POWER_GAUGE = Gauge("ngd_power_w", "GPU power draw in Watts")  # pyright: ignore[reportConstantRedefinition]
 
-        ROUTE_COUNTER = Counter("ngd_route_total", "Total routing decisions", ["route", "reason"])
-        SAMPLE_LATENCY = Histogram("ngd_sample_latency_seconds", "Time spent sampling and routing")
-        SAMPLE_ERRORS = Counter("ngd_sample_errors_total", "Total sampling errors")
-        _PROMETHEUS_INITIALIZED = True
+        ROUTE_COUNTER = Counter("ngd_route_total", "Total routing decisions", ["route", "reason"])  # pyright: ignore[reportConstantRedefinition]
+        SAMPLE_LATENCY = Histogram("ngd_sample_latency_seconds", "Time spent sampling and routing")  # pyright: ignore[reportConstantRedefinition]
+        SAMPLE_ERRORS = Counter("ngd_sample_errors_total", "Total sampling errors")  # pyright: ignore[reportConstantRedefinition]
+        _PROMETHEUS_INITIALIZED = True  # pyright: ignore[reportConstantRedefinition]
 
 # Correlation ID for request tracing
 _request_correlation_id: ContextVar[str] = ContextVar("request_correlation_id", default="")
@@ -200,6 +214,18 @@ def main(argv: list[str] | None = None) -> int:
         while running:
             _start_time = time.time()
 
+            # Ensure metrics are initialized
+            assert VRAM_FREE_GAUGE is not None
+            assert VRAM_USED_GAUGE is not None
+            assert VRAM_TOTAL_GAUGE is not None
+            assert GPU_UTIL_GAUGE is not None
+            assert MEM_UTIL_GAUGE is not None
+            assert TEMPERATURE_GAUGE is not None
+            assert POWER_GAUGE is not None
+            assert ROUTE_COUNTER is not None
+            assert SAMPLE_LATENCY is not None
+            assert SAMPLE_ERRORS is not None
+
             # Trace GPU sampling
             if _enable_tracing:
                 from .tracing import trace_gpu_sample
@@ -210,7 +236,6 @@ def main(argv: list[str] | None = None) -> int:
                 with SAMPLE_LATENCY.time():
                     sample = gpu.sample()
 
-            # Update Prometheus metrics
             VRAM_FREE_GAUGE.set(sample.vram_free_mb or 0)
             VRAM_USED_GAUGE.set(sample.vram_used_mb or 0)
             VRAM_TOTAL_GAUGE.set(sample.vram_total_mb or 0)
@@ -257,7 +282,7 @@ def main(argv: list[str] | None = None) -> int:
             logger.debug("sample complete")
             sleep(max(0.1, args.interval))
     except Exception:
-        SAMPLE_ERRORS.inc()
+        SAMPLE_ERRORS.inc()  # type: ignore[union-attr]
         logger.exception("driver loop error")
         return 1
 

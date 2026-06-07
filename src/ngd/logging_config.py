@@ -19,18 +19,18 @@ def get_correlation_id() -> str:
     cid = _correlation_id.get()
     if not cid:
         cid = uuid.uuid4().hex[:16]
-        _correlation_id.set(cid)
+        _ = _correlation_id.set(cid)
     return cid
 
 
 def set_correlation_id(cid: str) -> None:
     """Set the correlation ID for the current context."""
-    _correlation_id.set(cid)
+    _ = _correlation_id.set(cid)
 
 
 def clear_correlation_id() -> None:
     """Clear the correlation ID for the current context."""
-    _correlation_id.set("")
+    _ = _correlation_id.set("")
 
 
 @dataclass

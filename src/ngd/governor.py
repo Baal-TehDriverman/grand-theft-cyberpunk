@@ -41,10 +41,9 @@ class NemotronGovernor:
 
     def _load_cache(self) -> dict[str, Any]:
         try:
-            data: Any = json.loads(self.cache_path.read_text(encoding="utf-8"))
-            if isinstance(data, dict):
-                return data
-            return {}
+            content = self.cache_path.read_text(encoding="utf-8")
+            data: dict[str, Any] = json.loads(content)
+            return data
         except Exception:
             return {}
 
