@@ -29,11 +29,11 @@ jobs:
     outputs:
       version: ${{ steps.extract_version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10'
       - name: Install build dependencies
@@ -69,13 +69,13 @@ jobs:
           pip install cyclonedx-bom
           cyclonedx-py environment --pyproject pyproject.toml -o sbom.json
       - name: Upload SBOM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sbom
           path: sbom.json
           retention-days: 90
       - name: Upload dist artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
@@ -88,7 +88,7 @@ jobs:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true'
     steps:
       - name: Download dist artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
@@ -107,13 +107,13 @@ jobs:
           cosign attest-blob --yes --bundle dist/*.whl.attestation.sig dist/*.whl
           cosign attest-blob --yes --bundle dist/*.tar.gz.attestation.sig dist/*.tar.gz
       - name: Upload signatures and attestations
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: signatures
           path: dist/*.sig
           retention-days: 90
       - name: Upload attestations
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: attestations
           path: dist/*.attestation.sig
@@ -129,12 +129,12 @@ jobs:
       id-token: write
     steps:
       - name: Download dist artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
       - name: Download signatures
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: signatures
           path: dist/
@@ -150,27 +150,27 @@ jobs:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true'
     steps:
       - name: Download dist artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
       - name: Download signatures
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: signatures
           path: dist/
       - name: Download attestations
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: attestations
           path: dist/
       - name: Download SBOM
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: sbom
           path: .
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ needs.build.outputs.version }}
           name: nvidia-gratitude-driver v${{ needs.build.outputs.version }}
