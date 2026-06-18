@@ -7,28 +7,28 @@
     "working_set_mb": 0.0
   },
   "cooldown_active": true,
-  "cooldown_until": 1781817748.7635334,
+  "cooldown_until": 1781817818.867874,
   "human": {
-    "cooldown_seconds_remaining": 89.99941897392273,
+    "cooldown_seconds_remaining": 89.99992823600769,
     "reason": "Smoothed free VRAM 1103 MB below breach threshold.",
     "route": "CLOUD_CORTEX"
   },
-  "issued_at": "2026-06-18T21:20:58.763533+00:00",
+  "issued_at": "2026-06-18T21:22:08.867874+00:00",
   "reason": "Smoothed free VRAM 1103 MB below breach threshold.",
   "route": "CLOUD_CORTEX",
   "sample": {
     "gpu_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
     "gpu_util_pct": 0.0,
     "mem_util_pct": 100.0,
-    "power_w": 18.093,
+    "power_w": 27.011,
     "source": "nvml",
     "temperature_c": 49.0,
-    "ts": 1781817658.76312,
+    "ts": 1781817728.8678317,
     "vram_free_mb": 1103.375,
     "vram_total_mb": 6144.0,
     "vram_used_mb": 5040.625
   },
   "schema_version": 1,
   "smoothed_vram_free_mb": 1103.3749999999998,
-  "ts": 1781817658.7635334
+  "ts": 1781817728.867874
 }
