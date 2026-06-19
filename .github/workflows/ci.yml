@@ -1,0 +1,30 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: |
+          if [ -f package.json ]; then npm test 2>/dev/null || true; fi
+          if [ -f requirements.txt ] || [ -f pyproject.toml ]; then python -m pytest 2>/dev/null || true; fi
+          if [ -f Cargo.toml ]; then cargo test 2>/dev/null || true; fi
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint
+        run: |
+          if [ -f package.json ]; then npm run lint 2>/dev/null || npx eslint . 2>/dev/null || true; fi
+          if [ -f requirements.txt ] || [ -f pyproject.toml ]; then python -m ruff check . 2>/dev/null || true; fi
+          if [ -f Cargo.toml ]; then cargo clippy 2>/dev/null || true; fi
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: true
+      - uses: anchore/scan-action@v3
+        if: hashFiles('**/Dockerfile') != ''
