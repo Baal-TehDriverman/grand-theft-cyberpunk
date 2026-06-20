@@ -591,3 +591,7 @@ public final func OnConfession(player: ref<PlayerPuppet>, confession: String) ->
     }
 }
 */
+    public func TriggerCircle7DrownedWardenIntegration() -> Void {
+        LogChannel(n"DEBUG", "Living Sin Time Blade hitting Drowned Warden (Circle 7)!");
+        Game.GetCameraSystem().Shake(3.0, 2.0); // Heavy shake
+    }

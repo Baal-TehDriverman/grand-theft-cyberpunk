@@ -4,7 +4,7 @@
 
 set -e
 
-CP_DIR="/home/tehlappy/.local/share/Steam/steamapps/common/Cyberpunk 2077"
+CP_DIR="/mnt/d/Games/steamapps/common/Cyberpunk 2077"
 PROTON_EXP="/home/tehlappy/.local/share/Steam/steamapps/common/Proton - Experimental/proton"
 STEAM_COMPAT_DATA="$HOME/.local/share/Steam/steamapps/compatdata/1091500"
 STEAM_COMPAT_CLIENT="$HOME/.local/share/Steam"

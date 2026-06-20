@@ -15,6 +15,7 @@ import sys
 from dataclasses import dataclass
 from typing import List, Dict, Any, Optional
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 import threading
 
 # ============================================================
@@ -24,6 +25,8 @@ import threading
 CEREBELLUM_ENDPOINT = "http://localhost:11434/v1/completions"
 CORTEX_ENDPOINT = "http://localhost:8007/api/cortex/infer"
 BATCH_ENDPOINT = "http://localhost:11434/v1/completions/batch"
+
+ROOT = Path(__file__).resolve().parent
 
 SEPHIROTH = [
     "Kether", "Chokhmah", "Binah", "Chesed", "Geburah",
@@ -739,7 +742,7 @@ def run_performance_boost():
     
     # Save config
     config_yaml = boost.generate_config_yaml()
-    config_path = "/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/tweakdb/adaptive_quantization.yaml"
+    config_path = ROOT / "tweakdb" / "adaptive_quantization.yaml"
     with open(config_path, 'w') as f:
         f.write(config_yaml)
     print(f"\n  Config saved to: {config_path}")
@@ -782,7 +785,7 @@ def main():
         results["boost"] = run_performance_boost()
     
     # Save results
-    output_path = "/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/benchmark_results.json"
+    output_path = ROOT / "benchmark_results.json"
     # Convert dataclasses to dict for JSON serialization
     def serialize(obj):
         if hasattr(obj, '__dict__'):

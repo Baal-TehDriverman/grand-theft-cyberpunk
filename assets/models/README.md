@@ -4,7 +4,7 @@ This folder is the local source staging area for custom Cyberpunk model work der
 
 The current source-of-truth blueprint is:
 
-`/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/tweakdb/custom_models_msn_abyssal.yaml`
+`../../tweakdb/custom_models_msn_abyssal.yaml`
 
 The pack is organized around:
 

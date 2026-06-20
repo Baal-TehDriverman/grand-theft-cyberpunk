@@ -14,8 +14,9 @@ echo "╚═══════════════════════�
 
 # Configuration
 WOLVENKIT_PATH="${WOLVENKIT_PATH:-/opt/WolvenKit/WolvenKit.CLI}"
-CP2077_PATH="${CP2077_PATH:-/home/tehlappy/.steam/steam/steamapps/common/Cyberpunk 2077}"
-MOD_SOURCE="/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods"
+CP2077_PATH="${CP2077_PATH:-/mnt/d/Games/steamapps/common/Cyberpunk 2077}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MOD_SOURCE="$SCRIPT_DIR"
 MOD_OUTPUT="${MOD_SOURCE}/output"
 MOD_NAME="msn_magic_starwars"
 RED4EXT_VERSION="1.30.0"

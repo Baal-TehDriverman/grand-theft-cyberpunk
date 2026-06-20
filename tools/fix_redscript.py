@@ -165,9 +165,9 @@ def fix_file(filepath: Path, dry_run: bool = False) -> bool:
 def main():
     import sys
     
-    script_dir = Path("/home/tehlappy/.local/share/Steam/steamapps/common/Cyberpunk 2077/r6/scripts/msn_integration")
+    script_dir = Path("/mnt/d/Games/steamapps/common/Cyberpunk 2077/r6/scripts/msn_integration")
     if not script_dir.exists():
-        script_dir = Path("/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/scripts")
+        script_dir = Path(__file__).resolve().parents[1] / "scripts"
     
     dry_run = '--dry-run' in sys.argv or '-n' in sys.argv
     

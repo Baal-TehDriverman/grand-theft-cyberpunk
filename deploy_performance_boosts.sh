@@ -4,6 +4,9 @@
 # File: deploy_performance_boosts.sh
 
 set -e
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CP2077_PATH="${CP2077_PATH:-/mnt/d/Games/steamapps/common/Cyberpunk 2077}"
+
 
 echo "╔═══════════════════════════════════════════════════════════════════════════════╗"
 echo "║  DEPLOYING 15 PERFORMANCE BOOSTS — MSN CEREBELLUM                            ║"
@@ -162,8 +165,8 @@ echo "  ✅ SLO scheduler config: $SLO_CONFIG"
 # 6. DEPLOY UPDATED REDSCRIPTS
 # ============================================================
 echo "[6/7] Deploying updated REDscripts..."
-SCRIPTS_DIR="/home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/scripts"
-TARGET_DIR="/home/tehlappy/.steam/steam/steamapps/common/Cyberpunk 2077/r6/scripts"
+SCRIPTS_DIR="$SCRIPT_DIR/scripts"
+TARGET_DIR="${CP2077_PATH}/r6/scripts"
 
 # Copy updated scripts
 cp "$SCRIPTS_DIR/msn_cerebellum.reds" "$TARGET_DIR/cyberware/"
@@ -223,4 +226,4 @@ echo "  curl http://localhost:8007/api/cortex/spec/metrics"
 echo "  curl http://localhost:8007/api/cerebellum/scheduler/metrics"
 echo ""
 echo "Run benchmarks:"
-echo "  python3 /home/tehlappy/Desktop/AI/abyssal-assets/cp2077_mods/bench_cerebellum.py --test all"
+echo "  python3 \"$SCRIPT_DIR/bench_cerebellum.py\" --test all"
