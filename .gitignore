@@ -59,3 +59,15 @@ sbom.json
 # Environment
 .env
 .env.local
+# Restart / organize noise
+**/__pycache__/
+*.pyc
+*.pyo
+**/.pytest_cache/
+build/
+dist/
+*.egg-info/
+release/*.zip*
+release/*.sha256
+*.log
+*.tmp
