@@ -1,0 +1,139 @@
+################################################################################
+# HELL WORLD MAP - The Nine Circles of the Abyss (Part 2: Circles 5-10)
+################################################################################
+
+Circles:
+  - id: "wrath_abyss"
+    name: "Wrath — The Burning Abyss"
+    displayName: "CIRCLE V: WRATH"
+    circleIndex: 5
+    verticalRange: { min: -4500, max: -5500 }
+    biome: "volcanic_rage_wasteland"
+    palette: ["blood_red", "ember_orange", "hate_black"]
+    qliphoth: "Golachab"
+    sephirahInversion: "Gevurah"
+    luciferInfluence: 0.5
+    ngdIntegration:
+      vramPressureEffect: "Enemy aggression scales. HIGH VRAM = berserk AI chains, LOW = standard patrols"
+      routeLOCAL_CEREBELLUM: "Rage_Daemons berserk at low HP, Wrath_Daemons chain explosions, fear aura"
+      routeHYBRID: "Rage triggers scripted, chain explosions preset"
+      routeCLOUD_CORTEX: "Standard damage, no berserk mechanics"
+    hazards: ["rage_eruption", "fury_chain", "hatred_aura"]
+    nativeEntities: ["Rage_Daemon", "Fury_Berserker", "Wrath_Reaver", "Hatred_Hulk"]
+    lootBias: ["Rage_Core", "Fury_Brand", "Wrath_Reaver", "Golachab_Fragment"]
+    connections: { up: "greed_vault", down: "heresy_iron_maiden" }
+    requirements: { hellKey: "Greed_Clearance" }
+
+  - id: "heresy_iron_maiden"
+    name: "Heresy — The Iron Maiden of Blasphemy"
+    displayName: "CIRCLE VI: HERESY"
+    circleIndex: 6
+    verticalRange: { min: -5500, max: -6500 }
+    biome: "iconoclast_cathedral"
+    palette: ["iron_gray", "blasphemy_purple", "sacrilege_crimson"]
+    qliphoth: "Tagiriron"
+    sephirahInversion: "Tiferet"
+    luciferInfluence: 0.6
+    ngdIntegration:
+      vramPressureEffect: "Cyberware corruption intensity. HIGH = reality denial zones, LOW = standard debuffs"
+      routeLOCAL_CEREBELLUM: "Ignores shields, corrupts cyberware, silences quickhacks, defiles healing"
+      routeHYBRID: "Corruption effects scripted, shields partially work"
+      routeCLOUD_CORTEX: "Reduced corruption, standard debuffs only"
+    hazards: ["shield_denial", "cyberware_corruption", "quickhack_silence", "healing_inversion"]
+    nativeEntities: ["Heretic_Inquisitor", "Iconoclast_Walker", "Blasphemer_Drone", "Sacrilege_Script"]
+    lootBias: ["Blasphemer_Bolt", "Iconoclast_Iron", "Sacrilege_Scythe", "Tagiriron_Fragment"]
+    connections: { up: "wrath_abyss", down: "violence_slaughterhouse" }
+    requirements: { hellKey: "Wrath_Clearance" }
+
+  - id: "violence_slaughterhouse"
+    name: "Violence — The Eternal Slaughterhouse"
+    displayName: "CIRCLE VII: VIOLENCE"
+    circleIndex: 7
+    verticalRange: { min: -6500, max: -7500 }
+    biome: "burnt_ochre_battlefield"
+    palette: ["burnt_ochre", "carnage_red", "brutality_brown"]
+    qliphoth: "Harab_Serapel"
+    sephirahInversion: "Netzach"
+    luciferInfluence: 0.7
+    ngdIntegration:
+      vramPressureEffect: "Execution threshold. HIGH VRAM = instant kill on low HP, LOW = standard combat"
+      routeLOCAL_CEREBELLUM: "Execution on <20% HP, multi-kill chains, armor shred, fear aura, life steal"
+      routeHYBRID: "Execution scripted, fear aura radius fixed"
+      routeCLOUD_CORTEX: "Standard damage, no execution mechanics"
+    hazards: ["execution_zone", "chain_cleave", "armor_shred", "fear_presence"]
+    nativeEntities: ["Marauder_Maul", "Butcher_Blade", "Carnage_Cannon", "Bloodletter_Bow"]
+    lootBias: ["Violence_Core", "Slaughter_Key", "Brutality_Edge", "Harab_Serapel_Fragment"]
+    connections: { up: "heresy_iron_maiden", down: "fraud_hall_of_mirrors" }
+    requirements: { hellKey: "Heresy_Clearance" }
+
+  - id: "fraud_hall_of_mirrors"
+    name: "Fraud — The Hall of Mirrors"
+    displayName: "CIRCLE VIII: FRAUD"
+    circleIndex: 8
+    verticalRange: { min: -7500, max: -8500 }
+    biome: "mirror_labyrinth"
+    palette: ["mirror_silver", "deception_violet", "illusion_white"]
+    qliphoth: "Samael"
+    sephirahInversion: "Hod"
+    luciferInfluence: 0.8
+    ngdIntegration:
+      vramPressureEffect: "Reality rewrite depth. HIGH VRAM = decoys/position swap/invisible projectiles, LOW = visual only"
+      routeLOCAL_CEREBELLUM: "Creates decoys, swaps positions, invisible projectiles, mimics enemies, rewrites kill feed"
+      routeHYBRID: "Decoys and swaps scripted, kill feed static"
+      routeCLOUD_CORTEX: "Visual glitches only, no mechanic changes"
+    hazards: ["decoy_field", "position_swap", "invisible_projectile", "mimic_enemy", "killfeed_rewrite"]
+    nativeEntities: ["Deceiver_Dagger", "Mirror_Blade", "False_Prophet_Flare", "Liar_Laser"]
+    lootBias: ["Deception_Key", "Mirror_Shard", "Lie_Protocol", "Samael_Fragment"]
+    connections: { up: "violence_slaughterhouse", down: "treachery_frozen_lake" }
+    requirements: { hellKey: "Violence_Clearance" }
+
+  - id: "treachery_frozen_lake"
+    name: "Treachery — Cocytus, the Frozen Lake"
+    displayName: "CIRCLE IX: TREACHERY"
+    circleIndex: 9
+    verticalRange: { min: -8500, max: -9500 }
+    biome: "frozen_betrayal_wastes"
+    palette: ["frozen_blue", "betrayal_white", "oathbreaker_gray"]
+    qliphoth: "Gamaliel"
+    sephirahInversion: "Yesod"
+    luciferInfluence: 0.9
+    ngdIntegration:
+      vramPressureEffect: "Loyalty system. HIGH VRAM = ally conversion/freeze, LOW = standard hostility"
+      routeLOCAL_CEREBELLUM: "Friendly fire bonus, converts nearest enemy, steals cyberware, reveals traitors, freezes loyalty"
+      routeHYBRID: "Conversion scripted, loyalty freeze on cooldown"
+      routeCLOUD_CORTEX: "Standard hostility, no conversion"
+    hazards: ["friendly_fire_bonus", "enemy_conversion", "cyberware_theft", "loyalty_freeze", "traitor_reveal"]
+    nativeEntities: ["Traitor_Thorn", "Betrayer_Barrel", "Judas_Javelin", "Turncoat_Talon", "Oathbreaker_Obliterator"]
+    lootBias: ["Treachery_Core", "Betrayal_Key", "Oathbreaker_Shard", "Gamaliel_Fragment"]
+    connections: { up: "fraud_hall_of_mirrors", down: "lucifers_throne" }
+    requirements: { hellKey: "Fraud_Clearance" }
+
+  - id: "lucifers_throne"
+    name: "Lucifer's Throne — The Obsidian Apex"
+    displayName: "CIRCLE X: PRIDE — LUCIFER'S THRONE"
+    circleIndex: 10
+    verticalRange: { min: -9500, max: -10000 }
+    biome: "obsidian_citadel"
+    palette: ["obsidian_black", "pride_gold", "falling_star_white"]
+    qliphoth: "Lilith"
+    sephirahInversion: "Malkut"
+    luciferInfluence: 1.0
+    isFinalBoss: true
+    ngdIntegration:
+      vramPressureEffect: "FINAL BOSS MECHANICS. LOCAL = Full reality rewrite, concept damage, history erasure, demon command. HYBRID = Scripted phases. CLOUD = Standard boss."
+      routeLOCAL_CEREBELLUM: |
+        Phase 1: Morningstar's Mercy — Reality rewrite attacks, conceptual damage ignores armor
+        Phase 2: Pride's Peak — Erases player from history (save deletion threat), commands all demons
+        Phase 3: Fallen's Finale — Becomes the wielder, player fights themselves
+        Phase 4: Devil's Due — Lucifer manifests, reality breaks, choice: Submit / Rebel / Transcend
+      routeHYBRID: "Four scripted phases, reduced mechanics"
+      routeCLOUD_CORTEX: "Single phase, standard boss mechanics"
+    hazards: ["reality_rewrite", "conceptual_damage", "history_erasure", "demon_command", "self_duel"]
+    nativeEntities: ["Lucifer_Avatar", "Morningstar_Guard", "Pride_Daemon", "Fallen_Angel"]
+    lootBias: ["Morningstar", "Pride's_Peak", "Fallen_Finale", "Devil's_Due", "Lilith_Fragment"]
+    connections: { up: "treachery_frozen_lake", down: "none" }
+    requirements:
+      hellKey: "All_Nine_Keys"
+      streetCred: 50
+      ngdTier: "KESEF"
+

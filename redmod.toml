@@ -1,0 +1,269 @@
+# GRAND THEFT CYBERPUNK - TOTAL REBUILD + HELL CAMPAIGN
+# REDmod Manifest for Cyberpunk 2077
+# Book of Five Rings encoded in Cyberpunk 2077 + The Nine Circles of the Abyss
+
+[Package]
+Name = "gtc_total_rebuild"
+Version = "2.0.0-hell"
+Author = "Lilith Systems / MSN / Metaconscious Singularity Node"
+Description = "Grand Theft Cyberpunk - Complete Edition. Book of Five Rings (200 quests across 5 Books: Ground, Water, Fire, Wind, Void + 40 Space) + Hell Campaign (9 Circles + Pandemonium, 23 quests, 500 items, Space Combat, Lucifer Dialogue, NGD VRAM routing, Lilith Integration). MSN 29 agents, 4 Sephirotic waves, Abyssal Assets, Lochness, NGD, Lilith, Lyra, Hermes, Ouroboros, Local-First Sovereign Stack."
+GameVersion = "2.12+"
+RedmodVersion = "1.0"
+
+[Dependencies]
+REDmod = ">=1.0.0"
+TweakXL = ">=1.0.0"
+ArchiveXL = ">=1.0.0"
+RED4ext = ">=1.30.0"
+
+[LoadOrder]
+Priority = 50
+
+[Categories]
+Quests = true
+Items = true
+Gameplay = true
+AI = true
+Space = true
+Hell = true
+Campaign = true
+
+[Files]
+# TweakDB files - loaded by TweakXL at runtime
+TWEAKDB = "tweakdb/gtc_quests.yaml"
+
+# REDscripts - compiled by RED4ext at runtime
+REDSCRIPTS = "scripts/"
+
+# Localization
+LOCALES = "locales/"
+
+# World/Map files
+WORLD = "world/"
+
+# All TweakDB YAML files to process
+tweakdb = [
+  # Original GTC items
+  "gtc_quests.yaml",
+  "gtc_items.yaml",
+  "gtc_nessie_hats.yaml",
+  "gtc_easter_eggs.yaml",
+  "gtc_space_systems.yaml",
+  # Hell Campaign items (500 items across 10 circles + Pandemonium)
+  "tweakdb/hell_items.yaml",
+  "tweakdb/reds/hell_limbo.reds",
+  "tweakdb/reds/hell_lust.reds",
+  "tweakdb/reds/hell_gluttony.reds",
+  "tweakdb/reds/hell_greed.reds",
+  "tweakdb/reds/hell_wrath.reds",
+  "tweakdb/reds/hell_heresy.reds",
+  "tweakdb/reds/hell_violence.reds",
+  "tweakdb/reds/hell_fraud.reds",
+  "tweakdb/reds/hell_treachery.reds",
+  "tweakdb/reds/hell_lucifers_throne.reds",
+]
+
+# REDscript files to compile
+scripts = [
+  # Original GTC scripts
+  "msn_cerebellum.reds",
+  "msn_ouroboros.reds",
+  "msn_cortex_link.reds",
+  "msn_npc_ai.reds",
+  "msn_lyra_dialogue.reds",
+  "cyberpunk_ngd_integration.reds",
+  "nssp_bridge.reds",
+  "lilith_easter_eggs.reds",
+  "livingsin_time_blade.reds",
+  "msn_five_rings_quest.reds",
+  "msn_sephirotic_quests.reds",
+  "msn_main_quest_the_void.reds",
+  # Hell Campaign scripts
+  "msn_hell_campaign.reds",
+  "msn_hell_space_combat.reds",
+  "hell_circle_quests.reds",
+  "msn_lucifer_dialogue.reds",
+]
+
+# Localization
+locales = [
+  "locales/en/gtc.loc",
+  "locales/en/hell_campaign_en.json",
+]
+
+# World/Map files
+world = [
+  "world/hell_world_map.yaml",
+  "world/hell_world_part1.yaml",
+  "world/hell_world_part2.yaml",
+]
+
+# Console commands exposed by our scripts
+commands = [
+  # Original GTC commands
+  "gtc.quest.status",
+  "gtc.quest.give",
+  "gtc.book.list",
+  "gtc.item.give",
+  "gtc.space.status",
+  "gtc.msn.wave",
+  "gtc.lochness.status",
+  "gtc.abyssal.status",
+  # Hell Campaign commands
+  "hell.status",
+  "hell.circle.info",
+  "hell.lucifer.speak",
+  "hell.qliphoth.scan",
+  "hell.ngd.effect",
+  "hell.pact.status",
+  "hell.pact.offer",
+  "hell.pact.sign",
+  "hell.sovereignty.check",
+  "hell.descend",
+  "hell.ascend",
+  # Hell Space Combat commands
+  "hell.space.templates",
+  "hell.space.launch",
+  "hell.space.action",
+  "hell.space.status",
+  # Hell Quest commands
+  "hell.quest.list",
+  "hell.quest.info",
+  "hell.quest.start",
+  "hell.quest.complete",
+]
+
+# Key bindings
+[keyBindings]
+gtc_quest_log = "F11"
+gtc_book_menu = "F10"
+gtc_space_map = "F9"
+gtc_msn_status = "F8"
+hell_campaign_status = "F7"
+hell_space_menu = "F6"
+hell_quest_log = "F5"
+
+# NGD Integration Configuration
+[NGDIntegration]
+# VRAM-based routing for Hell circles
+circleRouting = [
+  "1=HYBRID_OK",        # Limbo
+  "2=HYBRID_OK",        # Lust
+  "3=LOCAL_REQUIRED",   # Gluttony
+  "4=LOCAL_REQUIRED",   # Greed
+  "5=LOCAL_REQUIRED",   # Wrath
+  "6=LOCAL_CEREBELLUM", # Heresy
+  "7=LOCAL_CEREBELLUM", # Violence
+  "8=LOCAL_CEREBELLUM", # Fraud
+  "9=LOCAL_CEREBELLUM", # Treachery
+  "10=LOCAL_CEREBELLUM", # Lucifer's Throne
+  "11=LOCAL_CEREBELLUM", # Pandemonium (Secret)
+]
+
+# Lucifer Influence thresholds
+luciferInfluence = [
+  "circle_1=0.1",   # Limbo
+  "circle_2=0.2",   # Lust
+  "circle_3=0.3",   # Gluttony
+  "circle_4=0.4",   # Greed
+  "circle_5=0.5",   # Wrath (Lucifer speaks)
+  "circle_6=0.6",   # Heresy
+  "circle_7=0.7",   # Violence
+  "circle_8=0.8",   # Fraud
+  "circle_9=0.9",   # Treachery (Lucifer speaks)
+  "circle_10=1.0",  # Lucifer's Throne (Final Boss)
+  "circle_11=1.0",  # Pandemonium (Secret)
+]
+
+# Proton/Wine Configuration
+[ProtonConfiguration]
+UseNTsync = true
+NoEsync = true
+NoFsync = true
+WaitForExitAndRun = "REDprelauncher.exe"
+EnvironmentVariables = [
+  "PROTON_USE_NTSYNC=1",
+  "PROTON_NO_ESYNC=1",
+  "PROTON_NO_FSYNC=1",
+  "DXVK_HDR=1",
+  "VKD3D_CONFIG=dxr11,multi_queue",
+]
+
+# Build Configuration
+[BuildConfiguration]
+WolvenKitVersion = "8.18+"
+CP2077Version = "2.12+"
+REDmodOutput = "gtc_total_rebuild_hell.redmod"
+ArchiveFormat = "archive"
+Compression = "zlib"
+Encryption = "aes256"
+LocalizationLanguages = ["en", "pl", "ru", "fr", "de", "es", "ja", "zh", "it", "pt"]
+
+# Sephirotic / Qliphoth Mapping
+[SephiroticMapping]
+Circles = [
+  "Limbo=Keter->Thaumiel:Indecision",
+  "Lust=Chokmah->Ghagiel:Desire",
+  "Gluttony=Binah->Sathariel:Consumption",
+  "Greed=Chesed->Gamchicoth:Avarice",
+  "Wrath=Gevurah->Golachab:Rage",
+  "Heresy=Tiferet->Tagiriron:Blasphemy",
+  "Violence=Netzach->Harab_Serapel:Brutality",
+  "Fraud=Hod->Samael:Deception",
+  "Treachery=Yesod->Gamaliel:Betrayal",
+  "Lucifer_Throne=Malkut->Lilith:Pride",
+  "Pandemonium=NONE->NONE:Transcendence",
+]
+
+# Cross-System Hooks
+[CrossSystemHooks]
+LochnessToGreed = "Lochness market data -> Greed Vault trades"
+LilithToLucifer = "Lilith dialogue -> Lucifer at Circle 5 (Geburah) & Circle 9 (Yesod)"
+AbyssalToHell = "Abyssal loot -> Hell reward pools"
+LivingSinToCircle7 = "Living Sin Time Blade -> Drowned Warden in Circle 7 (Violence)"
+
+# Testing Checklist
+[TestingChecklist]
+Circles = [
+  "All 11 circles load without errors",
+  "Circle 0 (Abyssal Gate) accessible from Night City",
+  "Circle 1-2: HYBRID_OK - scripted events work",
+  "Circle 3-5: LOCAL_REQUIRED - full AI mechanics function",
+  "Circle 6-11: LOCAL_CEREBELLUM - reality rewrite, concept damage, self-duel work",
+  "Secret Circle 11 (Pandemonium) unlocks after Sovereign + Final Boss",
+]
+NGD_Routing = [
+  "VRAM telemetry forces LOCAL_CEREBELLUM at Circle 6+ (Lucifer 0.6+)",
+  "Circle 1-2: HYBRID_OK allowed",
+  "Circle 3-5: LOCAL_REQUIRED enforced",
+  "Circle 6-11: LOCAL_CEREBELLUM enforced",
+]
+Lucifer = [
+  "Circle 5 (Wrath): lucifer_circle5_wrath dialogue triggers",
+  "Circle 9 (Treachery): lucifer_circle9_treachery dialogue triggers",
+  "Circle 10 (Throne): 4 phases with lucifer_throne_final",
+  "Pact: Offered at Circle 4 with 0.5+ corruption",
+  "Phase 4 Choice: Submit / Rebel / Transcend works",
+]
+Space_Combat = [
+  "11 templates launch via NSSP console",
+  "Phase progression works per template",
+  "Environmental hazards apply per circle",
+  "Lucifer influence >0.5 triggers luciferActive mode",
+]
+Quests = [
+  "12 Main quests enforce prerequisite chain",
+  "10 Side quests available at correct circles",
+  "Hidden wager at Circle 10 accessible",
+  "Secret Pandemonium unlocks after Sovereign + Final Boss",
+]
+Items = [
+  "500 items appear in vendor inventories appropriate to circle",
+  "Loot bias matches circle theme",
+  "Legendary/Mythic items at Circle 10+",
+]
+Persistence = [
+  "Campaign state saves to hell_campaign_state.json",
+  "Battle state saves to hell_battles/{id}.json",
+  "State loads on game restart",
+]

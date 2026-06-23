@@ -1,0 +1,133 @@
+################################################################################
+# HELL WORLD MAP - The Nine Circles of the Abyss (Part 1: Circles 0-4)
+# Grand Theft Cyberpunk: Abyssal Assets - Hell Campaign
+# Vertical biome system: each circle is a descending layer
+################################################################################
+
+WorldMap:
+  id: "hell_campaign_map"
+  displayName: "THE ABYSS — Nine Circles of Dis"
+  description: |
+    Beneath Night City's sub-net lies a corrupted sector — the Abyss.
+    Nine vertical circles, each a perversion of a Sephirah, 
+    descending to Lucifer's Throne at Malkut.
+    
+    VRAM Pressure = Hell's Stability.
+    LOCAL_CEREBELLUM (640MB+)  = Full simulation, choices matter
+    HYBRID (256-640MB)         = Scripted events, static geometry
+    CLOUD_CORTEX (<256MB)      = Bypass circles, direct to Throne
+
+  verticalAxis:
+    min: -9000
+    max: 0
+    step: -1000
+
+Circles:
+  - id: "hell_entry"
+    name: "Abyssal Gate — Night City Sub-Net"
+    displayName: "ABYSSAL GATE"
+    circleIndex: 0
+    verticalRange: { min: 0, max: -500 }
+    biome: "urban_ruin_corrupted"
+    palette: ["neon_blue", "static_gray", "blood_amber"]
+    qliphoth: "Thamiel"
+    sephirahInversion: "Keter"
+    luciferInfluence: 0.0
+    ngdIntegration:
+      vramPressureEffect: "Gate flickers, corruption seeps up"
+      routeLOCAL_CEREBELLUM: "Full gate sequence, chose entry vector"
+      routeHYBRID: "Scripted descent cinematic"
+      routeCLOUD_CORTEX: "Instant drop to Circle 1"
+    hazards: ["corruption_leak", "reality_fracture", "scanner_jammer"]
+    nativeEntities: ["Gatekeeper_AI", "Fallen_Fixer", "Corrupted_Drone"]
+    lootBias: ["Memory_Shard", "Entry_Key", "Corrupted_Eddies"]
+    connections: { up: "night_city_surface", down: "limbo_vestibule" }
+    requirements:
+      streetCred: 50
+      completion: "netwatch_mainline_final"
+      ngdTier: "CHOKHMAH"
+
+  - id: "limbo_vestibule"
+    name: "Limbo — The Vestibule of Indecision"
+    displayName: "CIRCLE I: LIMBO"
+    circleIndex: 1
+    verticalRange: { min: -500, max: -1500 }
+    biome: "endless_fog_ruins"
+    palette: ["pale_gray", "static_white", "memory_blue"]
+    qliphoth: "Thaumiel"
+    sephirahInversion: "Keter"
+    luciferInfluence: 0.1
+    ngdIntegration:
+      vramPressureEffect: "Fog density = VRAM inverse. HIGH VRAM = clear paths, LOW = maze shifts"
+      routeLOCAL_CEREBELLUM: "Vestiges interactive, dialogue changes outcome, memory leaks traversable"
+      routeHYBRID: "Fog static, vestiges visible but non-interactive"
+      routeCLOUD_CORTEX: "No fog, direct elevator to Circle 2"
+    hazards: ["apathy_field", "memory_leak", "decision_paralysis_daemon"]
+    nativeEntities: ["Vestige_Soul", "Uncommitted_AI", "Limbo_Walker"]
+    lootBias: ["Soul_Coin", "Memory_Shard", "Indecision_Essence", "Thaumiel_Fragment"]
+    connections: { up: "hell_entry", down: "lust_wind" }
+    requirements: { streetCred: 50, hellKey: "Abyssal_Gate_Key" }
+
+  - id: "lust_wind"
+    name: "Lust — The Hurricane of Desire"
+    displayName: "CIRCLE II: LUST"
+    circleIndex: 2
+    verticalRange: { min: -1500, max: -2500 }
+    biome: "neon_flesh_market"
+    palette: ["neon_pink", "carnal_red", "synthetic_gold"]
+    qliphoth: "Ghagiel"
+    sephirahInversion: "Chokmah"
+    luciferInfluence: 0.2
+    ngdIntegration:
+      vramPressureEffect: "Wind intensity scales with VRAM. HIGH = hurricane physics, LOW = scripted gusts"
+      routeLOCAL_CEREBELLUM: "Sirens adaptive AI, pleasure domes dynamic, Sirens hack player cyberware"
+      routeHYBRID: "Wind patterns preset, Sirens scripted patrols"
+      routeCLOUD_CORTEX: "Static wind, no Siren AI, reduced loot"
+    hazards: ["desire_vortex", "pleasure_overload", "siren_hack_daemon"]
+    nativeEntities: ["Siren_Netrunner", "Incubus_Script", "Succubus_Daemon", "Desire_Drone"]
+    lootBias: ["Siren_Chip", "Desire_Stim", "Pleasure_Protocol", "Ghagiel_Fragment"]
+    connections: { up: "limbo_vestibule", down: "gluttony_trench" }
+    requirements: { hellKey: "Limbo_Clearance" }
+
+  - id: "gluttony_trench"
+    name: "Gluttony — The Consuming Trench"
+    displayName: "CIRCLE III: GLUTTONY"
+    circleIndex: 3
+    verticalRange: { min: -2500, max: -3500 }
+    biome: "visceral_data_tract"
+    palette: ["visceral_orange", "digestive_green", "consumption_brown"]
+    qliphoth: "Sathariel"
+    sephirahInversion: "Binah"
+    luciferInfluence: 0.3
+    ngdIntegration:
+      vramPressureEffect: "Terrain digestion rate. HIGH VRAM = rapid consumption events, LOW = slow feast"
+      routeLOCAL_CEREBELLUM: "Real-time terrain deformation as ground eats structures, Consumer_Scripts swarm"
+      routeHYBRID: "Consumption events scripted, terrain static between events"
+      routeCLOUD_CORTEX: "No consumption mechanics, static loot tables"
+    hazards: ["acid_data_pool", "consumption_swarm", "hoarder_guardian"]
+    nativeEntities: ["Consumer_Script", "Devourer_Daemon", "Hoarder_AI", "Gluttony_Worm"]
+    lootBias: ["Consumer_Core", "Digestive_Enzyme", "Hoard_Key", "Sathariel_Fragment"]
+    connections: { up: "lust_wind", down: "greed_vault" }
+    requirements: { hellKey: "Lust_Clearance" }
+
+  - id: "greed_vault"
+    name: "Greed — The Infinite Vault"
+    displayName: "CIRCLE IV: GREED"
+    circleIndex: 4
+    verticalRange: { min: -3500, max: -4500 }
+    biome: "corporate_gold_vault"
+    palette: ["corporate_gold", "vault_steel", "avarice_silver"]
+    qliphoth: "Gamchicoth"
+    sephirahInversion: "Chesed"
+    luciferInfluence: 0.4
+    ngdIntegration:
+      vramPressureEffect: "Market volatility. HIGH VRAM = real-time arbitrage bots, LOW = frozen markets"
+      routeLOCAL_CEREBELLUM: "Treasury_Bots enforce contracts, Market_Maker_Daemons manipulate prices, hoarders vs wasters war"
+      routeHYBRID: "Market events scripted, Treasury Bots patrol routes fixed"
+      routeCLOUD_CORTEX: "Static markets, reduced Contract_Shard drops"
+    hazards: ["contract_daemon", "arbitrage_bot_swarm", "treasury_enforcer"]
+    nativeEntities: ["Hoarder_Executive", "Waster_Scavenger", "Treasury_Bot", "Market_Maker_Daemon"]
+    lootBias: ["Contract_Shard", "Treasury_Key", "Market_Data", "Gamchicoth_Fragment"]
+    connections: { up: "gluttony_trench", down: "wrath_abyss" }
+    requirements: { hellKey: "Gluttony_Clearance" }
+

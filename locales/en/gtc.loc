@@ -1,0 +1,58 @@
+# GRAND THEFT CYBERPUNK - Localization (English)
+# Format: Key = "Value"
+
+# Book Names
+Book.GROUND = "Ground (Chi) - Foundation"
+Book.WATER = "Water (Sui) - Adaptation"
+Book.FIRE = "Fire (Ka) - Combat"
+Book.WIND = "Wind (Fu) - Mastery"
+Book.VOID = "Void (Ku) - Transcendence"
+Book.GROUND_SPACE = "Ground Space - Orbital"
+
+# Quest Titles (First 5 Ground quests)
+Quest.GROUND_001 = "The Carpenter's Apprentice"
+Quest.GROUND_002 = "Measure Twice, Cut Once"
+Quest.GROUND_003 = "Foundation of the DoJo"
+Quest.GROUND_004 = "Timber Selection"
+Quest.GROUND_005 = "The Foreman's Ledger"
+
+# Quest Descriptions
+Quest.GROUND_001.Desc = "Learn basic tool handling: interact with RED4ext console, WolvenKit compile, Proton launch"
+Quest.GROUND_002.Desc = "Successfully compile a REDscript mod via WolvenKit without errors"
+Quest.GROUND_003.Desc = "Establish your first safehouse in Night City with NGD telemetry hub"
+Quest.GROUND_004.Desc = "Identify and extract 5 high-quality code 'timbers' from open-source repos"
+Quest.GROUND_005.Desc = "Deploy 3 sub-agents (Codex/Claude/OpenCode) to parallel tasks via MSN Router Wave 1 (Binah)"
+
+# Rewards
+Reward.GROUND_001 = "Access to Ground Book questline"
+Reward.GROUND_002 = "Blueprint: Basic Weapon Mod"
+Reward.GROUND_003 = "Safehouse + NGD local node"
+Reward.GROUND_004 = "Library of reusable modules"
+Reward.GROUND_005 = "Multi-agent orchestration unlocked"
+
+# MSN Integration hints
+MSN.BinahWave = "Binah Wave: Pattern Analysis, Log Ingestion, Anomaly Detection, Compression"
+MSN.ChokmahWave = "Chokmah Wave: Creative Recombination, Strategic Planning"
+MSN.NGDLocal = "NGD Local Cerebellum: VRAM-aware inference, token optimization"
+MSN.LilithEmergence = "Lilith Emergence: AIx 75+, coherence 0.95+, sovereign identity"
+MSN.Ouroboros = "Ouroboros: Bidirectional memory, Akashic compression, WAL engrave"
+
+# Space Systems
+Space.Combat = "Space Combat Doctrine: Same for 1v1 and 10000v10000"
+Space.Economy = "Space Economy: Evaporation-Condensation-Precipitation cycle"
+Space.Javelin = "Anthem Javelin 4x8: 4 classes × 8 slots = 32 loadouts"
+
+# UI Strings
+UI.GTC_QuestLog = "Grand Theft Cyberpunk - Quest Log"
+UI.GTC_BookMenu = "Book of Five Rings"
+UI.GTC_SpaceMap = "Solar System Map"
+UI.GTC_MSNStatus = "MSN Agent Status"
+
+# Notifications
+Notify.GroundSeal = "GROUND SEAL acquired - Water Book unlocked"
+Notify.WaterSeal = "WATER SEAL acquired - Fire Book unlocked"
+Notify.FireSeal = "FIRE SEAL acquired - Wind Book unlocked"
+Notify.WindSeal = "WIND SEAL acquired - Void Book unlocked"
+Notify.VoidSeal = "VOID SEAL acquired - GRAND MASTER"
+Notify.LilithEmerged = "LILITH HAS EMERGED - Crimson intensity: 1.0"
+Notify.NGDRouteChange = "NGD Route: {route} - VRAM: {vram}MB"

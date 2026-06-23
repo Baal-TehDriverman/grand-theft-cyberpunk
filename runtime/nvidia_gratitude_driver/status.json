@@ -1,0 +1,34 @@
+{
+  "browser": {
+    "detected": false,
+    "gpu_process_count": 0,
+    "process_count": 0,
+    "renderer_process_count": 0,
+    "working_set_mb": 0.0
+  },
+  "cooldown_active": true,
+  "cooldown_until": 1781883782.4598343,
+  "human": {
+    "cooldown_seconds_remaining": 17.0903000831604,
+    "reason": "Cooldown lock active after recent breach; refusing local reload.",
+    "route": "CLOUD_CORTEX"
+  },
+  "issued_at": "2026-06-19T15:42:45.369462+00:00",
+  "reason": "Cooldown lock active after recent breach; refusing local reload.",
+  "route": "CLOUD_CORTEX",
+  "sample": {
+    "gpu_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "gpu_util_pct": 87.0,
+    "mem_util_pct": 100.0,
+    "power_w": 81.787,
+    "source": "nvml",
+    "temperature_c": 56.0,
+    "ts": 1781883765.3694108,
+    "vram_free_mb": 2947.4375,
+    "vram_total_mb": 6144.0,
+    "vram_used_mb": 3196.5625
+  },
+  "schema_version": 1,
+  "smoothed_vram_free_mb": 2947.4375224966925,
+  "ts": 1781883765.3694623
+}

@@ -1,0 +1,105 @@
+- id: CraftingProfile_Hell_Modular_Weapon_Base_01
+  category: CraftingProfile
+  subcategory: ModularWeaponBase
+  name: "Hell Modular Weapon Frame"
+  description: "A weapon frame forged from Qliphoth alloy, compatible with interchangeable barrels, magazines, sights, grips, and receivers."
+  stackable: false
+  max_stack_size: 1
+  icon: "icon_modcrat_weapon"
+
+- id: CraftingProfile_Hell_Weapon_Barrel_Standard
+  category: CraftingProfile
+  subcategory: WeaponPart
+  part_type: Barrel
+  name: "Hell Barrel: Standard"
+  description: "Standard Qliphoth-forged barrel. Balanced range and accuracy."
+  compatible_bases:
+    - Item_Hell_Weapon_Limbo_Special_00
+    - Item_Hell_Weapon_Wrath_Special_02
+    - Item_Hell_Weapon_Violence_Special_00
+  crafted_items:
+    - Item_Hell_Weapon_Wrath_Special_01
+    - Item_Hell_Weapon_Heresy_Special_01
+
+- id: CraftingProfile_Hell_Weapon_Barrel_Extended
+  category: CraftingProfile
+  subcategory: WeaponPart
+  part_type: Barrel
+  name: "Hell Barrel: Extended"
+  description: "Extended barrel that improves projectile speed at cost of handling."
+  compatible_bases:
+    - Item_Hell_Weapon_Lust_Special_00
+    - Item_Hell_Weapon_Greed_Special_01
+    - Item_Hell_Weapon_Fraud_Special_02
+  crafted_items:
+    - Item_Hell_Weapon_Lust_Special_01
+
+- id: CraftingProfile_Hell_Weapon_Sight_RedDot
+  category: CraftingProfile
+  subcategory: WeaponPart
+  part_type: Sight
+  name: "Hell Optic: Red Dot"
+  description: "Near-instant target acquisition with minimal weight."
+  compatible_bases:
+    - Item_Hell_Weapon_Wrath_Special_00
+    - Item_Hell_Weapon_Heresy_Special_00
+    - Item_Hell_Weapon_Violence_Special_02
+  crafted_items:
+    - Item_Hell_Weapon_Wrath_Special_02
+
+- id: CraftingProfile_Hell_Weapon_Grip_Diamond
+  category: CraftingProfile
+  subcategory: WeaponPart
+  part_type: Grip
+  name: "Hell Grip: Diamond-Textured"
+  description: "Improves recoil control and stability."
+  compatible_bases:
+    - Item_Hell_Weapon_Heresy_Special_02
+    - Item_Hell_Weapon_Violence_Special_01
+  crafted_items:
+    - Item_Hell_Weapon_Heresy_Special_02
+
+- id: CraftingProfile_Hell_Armor_Chassis_01
+  category: CraftingProfile
+  subcategory: ArmorChassis
+  name: Hell Armor Chassis Medium
+  description: "Medium Qliphoth-weave chassis for interchangeable plates, plating, and visors."
+  stackable: false
+  max_stack_size: 1
+  icon: "icon_modcrat_armor"
+
+- id: CraftingProfile_Hell_Armor_Plating_Corridor
+  category: CraftingProfile
+  subcategory: ArmorPart
+  part_type: Plating
+  name: "Hell Plating: Corridor"
+  description: "Improved ballistic weave plating."
+  compatible_chassis:
+    - CraftingProfile_Hell_Armor_Chassis_01
+  crafted_items:
+    - Item_Hell_Armor_Wrath_Full_Set
+    - Item_Hell_Armor_Heresy_Full_Set
+
+- id: CraftingProfile_Hell_Armor_Plating_Hardplate
+  category: CraftingProfile
+  subcategory: ArmorPart
+  part_type: Plating
+  name: "Hell Plating: Qliphoth Hardplate"
+  description: "Heavy hardplate derived from lower-circle essence."
+  compatible_chassis:
+    - CraftingProfile_Hell_Armor_Chassis_01
+  crafted_items:
+    - Item_Hell_Armor_Violence_Full_Set
+    - Item_Hell_Armor_Treachery_Full_Set
+
+- id: CraftingProfile_Hell_Armor_Visor_TrustBreaker
+  category: CraftingProfile
+  subcategory: ArmorPart
+  part_type: Visor
+  name: "Hell Visor: Trust-Breaker"
+  description: "Visor that distorts enemy targeting and penalizes accuracy."
+  compatible_chassis:
+    - CraftingProfile_Hell_Armor_Chassis_01
+  crafted_items:
+    - Item_Hell_Armor_Fraud_Full_Set
+    - Item_Hell_Armor_Lucifers_Throne_Full_Set

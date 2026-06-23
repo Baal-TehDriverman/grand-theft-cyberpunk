@@ -1,0 +1,246 @@
+{
+  "ProjectName": "GTC_Total_Rebuild_Hell_Campaign",
+  "DisplayName": "Grand Theft Cyberpunk: Total Rebuild + Hell Campaign",
+  "Description": "Complete Edition: Book of Five Rings (200 quests, 5 Books + 40 Space) + Hell Campaign (11 Circles, 23 quests, 500 items, Space Combat, Lucifer Dialogue, NGD VRAM routing, Lilith Integration). MSN 29 agents, 4 Sephirotic waves, Abyssal Assets, Lochness, NGD, Lilith, Lyra, Hermes, Ouroboros. Local-First Sovereign Stack.",
+  "Author": "Lilith Systems / MSN / Metaconscious Singularity Node",
+  "Version": "2.0.0-hell",
+  "GameVersion": "2.12+",
+  "REDmodVersion": "1.0",
+
+  "Dependencies": [
+    "msn_integration",
+    "msn_weapon_overhaul",
+    "cyberpunk_tweakdb",
+    "cyberpunk_redscript",
+    "red4ext"
+  ],
+
+  "TweakDBFiles": [
+    "tweakdb/gtc_quests.yaml",
+    "tweakdb/gtc_items.yaml",
+    "tweakdb/gtc_nessie_hats.yaml",
+    "tweakdb/gtc_easter_eggs.yaml",
+    "tweakdb/gtc_space_systems.yaml",
+    "tweakdb/hell_items.yaml",
+    "tweakdb/reds/hell_limbo.reds",
+    "tweakdb/reds/hell_lust.reds",
+    "tweakdb/reds/hell_gluttony.reds",
+    "tweakdb/reds/hell_greed.reds",
+    "tweakdb/reds/hell_wrath.reds",
+    "tweakdb/reds/hell_heresy.reds",
+    "tweakdb/reds/hell_violence.reds",
+    "tweakdb/reds/hell_fraud.reds",
+    "tweakdb/reds/hell_treachery.reds",
+    "tweakdb/reds/hell_lucifers_throne.reds"
+  ],
+
+  "ScriptFiles": [
+    "scripts/msn_cerebellum.reds",
+    "scripts/msn_ouroboros.reds",
+    "scripts/msn_cortex_link.reds",
+    "scripts/msn_npc_ai.reds",
+    "scripts/msn_lyra_dialogue.reds",
+    "scripts/cyberpunk_ngd_integration.reds",
+    "scripts/nssp_bridge.reds",
+    "scripts/lilith_easter_eggs.reds",
+    "scripts/livingsin_time_blade.reds",
+    "scripts/msn_five_rings_quest.reds",
+    "scripts/msn_sephirotic_quests.reds",
+    "scripts/msn_main_quest_the_void.reds",
+    "scripts/msn_hell_campaign.reds",
+    "scripts/msn_hell_space_combat.reds",
+    "scripts/hell_circle_quests.reds",
+    "scripts/msn_lucifer_dialogue.reds"
+  ],
+
+  "LocalizationFiles": [
+    "localization/gtc.loc",
+    "localization/hell_campaign_en.json"
+  ],
+
+  "WorldFiles": [
+    "world/hell_world_map.yaml",
+    "world/hell_world_part1.yaml",
+    "world/hell_world_part2.yaml"
+  ],
+
+  "AssetCategories": {
+    "GTC_Original": {
+      "Ground_Book": 40,
+      "Water_Book": 40,
+      "Fire_Book": 40,
+      "Wind_Book": 40,
+      "Void_Book": 40,
+      "Space_Book": 40,
+      "Custom_Items": 500,
+      "Nessie_Hats": 20,
+      "Easter_Eggs": 40,
+      "MSN_Agents": 29,
+      "Sephirotic_Waves": 4
+    },
+    "Hell_Campaign": {
+      "Circles": 11,
+      "Main_Quests": 12,
+      "Side_Quests": 10,
+      "Hidden_Quests": 1,
+      "Custom_Items": 500,
+      "Space_Battle_Templates": 11,
+      "Lucifer_Dialogue_Entries": 6,
+      "NGD_Routes": 3
+    }
+  },
+
+  "SephiroticMapping": {
+    "GTC_Books": {
+      "Ground": "Yesod (Foundation) - Earth/Structure",
+      "Water": "Hod (Intellect) - Flow/Adaptation",
+      "Fire": "Netzach (Victory) - Energy/Action",
+      "Wind": "Tiferet (Balance) - Perception/Strategy",
+      "Void": "Kether (Crown) - Transcendence/Unity"
+    },
+    "Hell_Circles": {
+      "Limbo": "Keter -> Thaumiel (Indecision)",
+      "Lust": "Chokmah -> Ghagiel (Desire)",
+      "Gluttony": "Binah -> Sathariel (Consumption)",
+      "Greed": "Chesed -> Gamchicoth (Avarice)",
+      "Wrath": "Gevurah -> Golachab (Rage)",
+      "Heresy": "Tiferet -> Tagiriron (Blasphemy)",
+      "Violence": "Netzach -> Harab_Serapel (Brutality)",
+      "Fraud": "Hod -> Samael (Deception)",
+      "Treachery": "Yesod -> Gamaliel (Betrayal)",
+      "Lucifer_Throne": "Malkut -> Lilith (Pride)",
+      "Pandemonium": "NONE -> NONE (Transcendence)"
+    },
+    "LuciferIntegration": {
+      "Circle5_Wrath": "Geburah speaks via Lucifer",
+      "Circle9_Treachery": "Yesod speaks via Lucifer",
+      "Circle10_Throne": "Malkut speaks via Lucifer (4 phases)",
+      "PactTier1": "Offered at Circle 4 (Greed) with 0.5+ corruption"
+    }
+  },
+
+  "BuildConfiguration": {
+    "WolvenKitVersion": "8.18+",
+    "CP2077Version": "2.12+",
+    "REDmodOutput": "gtc_total_rebuild_hell.redmod",
+    "ArchiveFormat": "archive",
+    "Compression": "zlib",
+    "Encryption": "aes256",
+    "LocalizationLanguages": ["en", "pl", "ru", "fr", "de", "es", "ja", "zh", "it", "pt"],
+    "BuildSteps": [
+      "1. Compile all 27 REDscripts",
+      "2. Process 5 GTC TweakDB YAML + 1 Hell Items YAML + 10 Circle REDS",
+      "3. Process 3 World/Map YAML files",
+      "4. Generate localization from gtc.loc + hell_campaign_en.json",
+      "5. Package assets (models, textures, audio for hell effects + GTC content)",
+      "6. Create REDmod archive with manifest",
+      "7. Sign with mod certificate",
+      "8. Validate via WolvenKit verify"
+    ]
+  },
+
+  "ProtonConfiguration": {
+    "UseNTsync": true,
+    "NoEsync": true,
+    "NoFsync": true,
+    "WaitForExitAndRun": "REDprelauncher.exe",
+    "EnvironmentVariables": {
+      "PROTON_USE_NTSYNC": "1",
+      "PROTON_NO_ESYNC": "1",
+      "PROTON_NO_FSYNC": "1",
+      "DXVK_HDR": "1",
+      "VKD3D_CONFIG": "dxr11,multi_queue"
+    }
+  },
+
+  "NGDIntegration": {
+    "CircleRouting": {
+      "1": "HYBRID_OK",
+      "2": "HYBRID_OK",
+      "3": "LOCAL_REQUIRED",
+      "4": "LOCAL_REQUIRED",
+      "5": "LOCAL_REQUIRED",
+      "6": "LOCAL_CEREBELLUM",
+      "7": "LOCAL_CEREBELLUM",
+      "8": "LOCAL_CEREBELLUM",
+      "9": "LOCAL_CEREBELLUM",
+      "10": "LOCAL_CEREBELLUM",
+      "11": "LOCAL_CEREBELLUM"
+    },
+    "LuciferInfluence": {
+      "circle_1": 0.1,
+      "circle_2": 0.2,
+      "circle_3": 0.3,
+      "circle_4": 0.4,
+      "circle_5": 0.5,
+      "circle_6": 0.6,
+      "circle_7": 0.7,
+      "circle_8": 0.8,
+      "circle_9": 0.9,
+      "circle_10": 1.0,
+      "circle_11": 1.0
+    }
+  },
+
+  "CrossSystemHooks": {
+    "LochnessToGreed": "Lochness market data -> Greed Vault trades",
+    "LilithToLucifer": "Lilith dialogue -> Lucifer at Circle 5 (Geburah) & Circle 9 (Yesod)",
+    "AbyssalToHell": "Abyssal loot -> Hell reward pools",
+    "LivingSinToCircle7": "Living Sin Time Blade -> Drowned Warden in Circle 7 (Violence)"
+  },
+
+  "TestingChecklist": {
+    "GTC_Original": [
+      "All 200 GTC quests load (5 Books × 40)",
+      "40 Space quests operational",
+      "MSN 29 agents + 4 Sephirotic waves active",
+      "Abyssal Assets CLOB + dredge mini-game functional",
+      "Lochness 10 bots + 7 forex via Ouroboros RNN",
+      "NGD LOCAL_CEREBELLUM > 640MB VRAM",
+      "WolvenKit compiled REDmod loads"
+    ],
+    "Hell_Campaign": [
+      "All 11 circles load without errors",
+      "Circle 0 (Abyssal Gate) accessible from Night City",
+      "Circle 1-2: HYBRID_OK - scripted events work",
+      "Circle 3-5: LOCAL_REQUIRED - full AI mechanics function",
+      "Circle 6-11: LOCAL_CEREBELLUM - reality rewrite, concept damage, self-duel work",
+      "Secret Circle 11 (Pandemonium) unlocks after Sovereign + Final Boss"
+    ],
+    "NGD_Routing": [
+      "VRAM telemetry forces LOCAL_CEREBELLUM at Circle 6+ (Lucifer 0.6+)",
+      "Circle 1-2: HYBRID_OK allowed",
+      "Circle 3-5: LOCAL_REQUIRED enforced",
+      "Circle 6-11: LOCAL_CEREBELLUM enforced"
+    ],
+    "Lucifer": [
+      "Circle 5 (Wrath): lucifer_circle5_wrath dialogue triggers",
+      "Circle 9 (Treachery): lucifer_circle9_treachery dialogue triggers",
+      "Circle 10 (Throne): 4 phases with lucifer_throne_final",
+      "Pact: Offered at Circle 4 with 0.5+ corruption",
+      "Phase 4 Choice: Submit / Rebel / Transcend works"
+    ],
+    "Space_Combat": [
+      "11 templates launch via NSSP console",
+      "Phase progression works per template",
+      "Environmental hazards apply per circle",
+      "Lucifer influence >0.5 triggers luciferActive mode"
+    ],
+    "Quests": [
+      "12 Main quests enforce prerequisite chain",
+      "10 Side quests available at correct circles",
+      "Hidden wager at Circle 10 accessible",
+      "Secret Pandemonium unlocks after Sovereign + Final Boss"
+    ],
+    "Items": [
+      "500 GTC items + 500 Hell items = 1000 total items",
+      "Loot bias matches circle/theme",
+      "Legendary/Mythic items at Circle 10+"
+    ],
+    "Persistence": [
+      "Campaign state saves to hell_campaign_state.json",
+      "Battle state saves to hell_battles/{id}.json",
+      "State loads on game restart"
+    ]
+  }
+}
